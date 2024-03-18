@@ -1,0 +1,95 @@
+DDL - Data definition language
+     
+     >create:criar
+     > drop:deletar
+     > alter : alteração
+
+
+  base de dados: conjunto de tabelas que componhe um sistema
+
+   
+programa que iremos usar |SQL SERVER|
+
+"o oracle e necessario criar uma conta na nuvem"
+
+toda vez que o sql for usado utilizar 1 "SQL SERVER 2019 consfiguration manager"
+
+2- ir em "SQL SERVER NETWORK CONSIGURATION
+3- PROTOCOLS for msqserver
+4-ativar o de baixo
+5-depois startar o sql server services
+6-ativar o primeiro
+
+super admin - oq da permissoes para usuarios
+senha do lab -123456
+
+north e pubs - duas bases de dados
+
+create database - criar uma base de dados
+use nomedabase - entra na base de dados
+
+varchar - é variavel, ou seja sobra espaco
+char - fixo
+
+
+numeros com virgula - exemplo (8,2) |8 espaços e 2 casas decimais|
+
+
+
+
+
+create database escola;
+
+use escola;
+
+create table tbl_instrutor(
+	cod_instrutor numeric(3) not null primary key,
+	nome_instrututor varchar(30) not null,
+	foneinstrutor varchar(15)
+);
+
+create table cliente(
+	cpf_clie char(11) not null primary key,
+	dt_nasc date not null,
+	nm_clie varchar(30) not null,
+	end_clie varchar(50),
+	cep_clie char(8)
+);
+
+create table produto(
+	ds_prod varchar(50) not null,
+	cd_prod numeric(6) primary key,
+	preco numeric(10,2) not null,
+	qtde numeric(8,2) not null
+);
+
+drop table produto;
+
+
+create table produto(
+	ds_prod varchar(50) not null,
+	cd_prod numeric(6) primary key,
+	preco numeric(12,2) not null,
+	qtde numeric(10,2) not null
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

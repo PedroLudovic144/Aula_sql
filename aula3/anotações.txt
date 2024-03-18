@@ -1,0 +1,110 @@
+Aula 3 11-03-24
+
+ir no management studios
+
+server network configuration
+protocols
+TCP/ip
+Sql server 
+Ativar o primeiro
+
+
+create table aluno(
+rm varchar(11) primary key
+)
+
+ou
+
+create table aluno(
+rm varchar(11) not null,
+.
+.
+                        ,
+primary key (rm)
+)
+
+foreign key
+
+Integridade referencial
+
+
+----------------------------------------------------------
+
+GRAVADORA 
+
+
+
+
+create database Cds_Musica ;
+
+use Cds_Musica;
+
+
+create table cds(
+codigo numeric(3) constraint cds_codNNPK not null primary key,
+nome varchar(50) constraint cds_nmNN not null,
+dataCompra date constraint cds_dtCompNN not null,
+valorPago numeric(10,2) constraint cds_valorPagoNN not null,
+localCompra varchar(20) constraint cds_localCompraU unique,
+album char(1) constraint cds_albumU unique
+);
+
+
+
+sp_help cds;
+
+create table musicas(
+
+numero numeric(2) constraint musicas_numPk primary key,
+codigoCD numeric(3) constraint codCdFK references cds(codigo),
+nome varchar(50) constraint musicas_nomeNN not null,
+artista varchar(50) constraint musicas_artsNNU not null unique,
+tempo numeric(4) constraint musicas_tempo not null
+);
+
+------------------------------------------------------------------------------
+
+
+ALter Table
+   addd campos
+   alterar tipos
+   mudanca das constraints
+
+
+  alter table nome-tabela
+               ação escolhida
+
+
+
+create database Cds_Musica ;
+
+use Cds_Musica;
+
+
+create table cds(
+codigo numeric(3) constraint cds_codNNPK not null primary key,
+nome varchar(50) constraint cds_nmNN not null,
+dataCompra date constraint cds_dtCompNN not null,
+valorPago numeric(10,2) constraint cds_valorPagoNN not null,
+localCompra varchar(20) constraint cds_localCompraU unique,
+album char(1) constraint cds_albumU unique
+);
+
+
+
+sp_help cds;
+
+create table musicas(
+
+numero numeric(2) constraint musicas_numPk primary key,
+codigoCD numeric(3) constraint codCdFK references cds(codigo),
+nome varchar(50) constraint musicas_nomeNN not null,
+artista varchar(50) constraint musicas_artsNNU not null unique,
+tempo numeric(4) constraint musicas_tempo not null
+);
+
+
+
+
+
+
