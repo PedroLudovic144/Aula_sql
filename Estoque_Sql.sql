@@ -314,35 +314,29 @@ GROUP BY
 Listagem 8. Listagem dos pesos de entrada e saída.
 	
 SELECT 
-    'Entrada' AS tipo_movimentacao,
-    SUM(ie.qtde * p.peso) AS peso_total
+    'Movimentação' AS tipo_movimentacao,
+    SUM(CASE WHEN ie.Produto_codproduto IS NOT NULL THEN ie.qtde * p.peso ELSE 0 END) AS peso_total_entrada,
+    SUM(CASE WHEN isd.Produto_codproduto IS NOT NULL THEN isd.qtde * p.peso ELSE 0 END) AS peso_total_saida
 FROM 
-    ItemEntrada ie, Produto p
-WHERE 
-    ie.Produto_codproduto = p.codproduto
-UNION ALL
-SELECT 
-    'Saída' AS tipo_movimentacao,
-    SUM(isd.qtde * p.peso) AS peso_total
-FROM 
-    ItemSaida isd, Produto p
-WHERE 
-    isd.Produto_codproduto = p.codproduto;
+    Produto p
+LEFT JOIN 
+    ItemEntrada ie ON ie.Produto_codproduto = p.codproduto
+LEFT JOIN 
+    ItemSaida isd ON isd.Produto_codproduto = p.codproduto
+GROUP BY 
+    tipo_movimentacao;
+
+
 
   
 Listagem 9. Total de frete gasto na entrada e saída.
 
 	SELECT 
-    'Entrada' AS tipo_movimentacao,
-    SUM(e.frete) AS total_frete
+    'Movimentação' AS tipo_movimentacao,
+    SUM(CASE WHEN e.codentrada IS NOT NULL THEN e.frete ELSE 0 END) AS total_frete_entrada,
+    SUM(CASE WHEN s.codsaida IS NOT NULL THEN s.frete ELSE 0 END) AS total_frete_saida
 FROM 
-    Entrada e
-UNION ALL
-SELECT 
-    'Saída' AS tipo_movimentacao,
-    SUM(s.frete) AS total_frete
-FROM 
-    Saida s;
+    Entrada e;
 
  
 Listagem 10. Quantidade de item por categoria.
