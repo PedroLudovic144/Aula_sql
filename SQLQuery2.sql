@@ -37,15 +37,15 @@ DECLARE
     @n1 INT = 0,
     @n2 INT = 1,
     @count INT = 0,
-    @nth INT;
+    @n3 INT;
 
 WHILE @count < 15
 BEGIN
     PRINT @n1;
 
-    SET @nth = @n1 + @n2;
+    SET @n3 = @n1 + @n2;
     SET @n1 = @n2;
-    SET @n2 = @nth;
+    SET @n2 = @n3;
 
     SET @count = @count + 1;
 END
